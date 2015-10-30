@@ -16,11 +16,11 @@ RUN cd /opt/jboss/ \
 
 # Download config files
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/standalone.conf > $JBOSS_HOME/bin/standalone.conf
-RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/application-roles.properties > $JBOSS_HOME/standalone/configuration/application-roles.properties
-RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/application-users.properties > $JBOSS_HOME/standalone/configuration/application-users.properties
+RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/cb56b5eb0b23520960671d818ab94af82f0dece7/ansible/files/application-roles.properties > $JBOSS_HOME/standalone/configuration/application-roles.properties
+RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/cb56b5eb0b23520960671d818ab94af82f0dece7/ansible/files/application-users.properties > $JBOSS_HOME/standalone/configuration/application-users.properties
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-groups.properties > $JBOSS_HOME/standalone/configuration/mgmt-groups.properties 
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-users.properties > $JBOSS_HOME/standalone/configuration/mgmt-users.properties 
 
 EXPOSE 8080 9990 9999 8009 8443 3528 3529 5445 8090 4447 4712 4713 8001 9418
 
-ENTRYPOINT $JBOSS_HOME/bin/standalone.sh 
+CMD ["/opt/jboss/jboss-eap-6.4/bin/standalone.sh"]
