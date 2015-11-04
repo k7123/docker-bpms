@@ -11,11 +11,11 @@ USER jboss
 
 
 ####### BPMS ARTIFACT #######
-ENV ARTIFACT_REPOSITORY http://download.eng.bos.redhat.com/brewroot/repos/jb-ip-6.1-build/latest/maven/org/jboss/ip/jboss-bpmsuite
-ENV BPMS_VERSION 6.1.4.GA-redhat-2
+ENV ARTIFACT_REPOSITORY http://dev138.mw.lab.eng.bos.redhat.com/candidate
+ENV BPMS_VERSION 6.2.0.ER5
 
 RUN cd /opt/jboss/ \
-	&& curl -O $ARTIFACT_REPOSITORY/$BPMS_VERSION/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
+	&& curl -O $ARTIFACT_REPOSITORY/bpmsuite-$BPMS_VERSION/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
 	&& unzip -q -o jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip -d .  \ 
 	&& rm jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip
 
