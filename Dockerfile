@@ -40,6 +40,6 @@ ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
 
 
 ####### PORTS #######
-EXPOSE 8080 9990 9418 8001
+EXPOSE 8080 9990 9999 8009 8443 3528 3529 5445 8090 4447 4712 4713 8001 9418 
 
 CMD ["/opt/jboss/jboss-eap-6.4/bin/standalone.sh"]
