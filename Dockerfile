@@ -29,7 +29,7 @@ RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/maste
 
 ####### MAVEN CONFIG #######
 RUN mkdir -p /opt/jboss/.m2 \
-	&& curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/44c9115b6a8bce3c8a39b76520fcd96edc58b73c/ansible/files/settings.xml > /opt/jboss/.m2/settings.xml
+	&& curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/852ff4a423b147eab7d2025e51e0294214676c20/ansible/files/settings.xml > /opt/jboss/.m2/settings.xml
 
 
 ####### JAVA_OPTS #######
