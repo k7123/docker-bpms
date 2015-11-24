@@ -36,11 +36,7 @@ RUN mkdir -p /opt/jboss/.m2 \
 ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
 	-Djboss.bind.address=0.0.0.0 \
 	-Djboss.bind.address.management=0.0.0.0 \
-<<<<<<< HEAD
-        -Dorg.uberfire.nio.git.daemon.host=0.0.0.0 \
-=======
     -Dorg.uberfire.nio.git.daemon.host=0.0.0.0 \
->>>>>>> master
 	-Dorg.uberfire.nio.git.ssh.host=0.0.0.0 \
 	-Djava.security.egd=file:/dev/./urandom
 
