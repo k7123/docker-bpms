@@ -21,7 +21,7 @@ RUN cd /opt/jboss/ \
 
 
 ####### EAP CONFIG #######
-RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/cb56b5eb0b23520960671d818ab94af82f0dece7/ansible/files/application-roles.properties > $JBOSS_HOME/standalone/configuration/application-roles.properties
+RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/53e733739dece3223ecaa6554dea62e5b68d1609/ansible/files/application-roles.properties > $JBOSS_HOME/standalone/configuration/application-roles.properties
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/cb56b5eb0b23520960671d818ab94af82f0dece7/ansible/files/application-users.properties > $JBOSS_HOME/standalone/configuration/application-users.properties
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-groups.properties > $JBOSS_HOME/standalone/configuration/mgmt-groups.properties 
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-users.properties > $JBOSS_HOME/standalone/configuration/mgmt-users.properties 
@@ -36,7 +36,11 @@ RUN mkdir -p /opt/jboss/.m2 \
 ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
 	-Djboss.bind.address=0.0.0.0 \
 	-Djboss.bind.address.management=0.0.0.0 \
+<<<<<<< HEAD
         -Dorg.uberfire.nio.git.daemon.host=0.0.0.0 \
+=======
+    -Dorg.uberfire.nio.git.daemon.host=0.0.0.0 \
+>>>>>>> master
 	-Dorg.uberfire.nio.git.ssh.host=0.0.0.0 \
 	-Djava.security.egd=file:/dev/./urandom
 
