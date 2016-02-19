@@ -1,30 +1,30 @@
-FROM sherl0cks/eap:6.4.4
+FROM sherl0cks/docker-eap:6.4.4
 
 ####### MAINTAINER ############
 MAINTAINER "Justin Holmes" "jholmes@redhat.com"
 
 
-####### INSTALL PACKAGES ####### 
+####### INSTALL PACKAGES #######
 USER root
 RUN yum install -y git && yum clean all
 USER jboss
 
 
 ####### BPMS ARTIFACT #######
-ENV ARTIFACT_REPOSITORY http://download.eng.bos.redhat.com/brewroot/repos/jb-ip-6.1-build/latest/maven/org/jboss/ip/jboss-bpmsuite
+ENV ARTIFACT_REPOSITORY http://209.132.179.144
 ENV BPMS_VERSION 6.2.0.GA-redhat-1
 
 RUN cd /opt/jboss/ \
-	&& curl -O $ARTIFACT_REPOSITORY/$BPMS_VERSION/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
-	&& unzip -q -o jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip -d .  \ 
+	&& curl -O $ARTIFACT_REPOSITORY/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
+	&& unzip -q -o jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip -d .  \
 	&& rm jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip
 
 
 ####### EAP CONFIG #######
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/53e733739dece3223ecaa6554dea62e5b68d1609/ansible/files/application-roles.properties > $JBOSS_HOME/standalone/configuration/application-roles.properties
 RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/cb56b5eb0b23520960671d818ab94af82f0dece7/ansible/files/application-users.properties > $JBOSS_HOME/standalone/configuration/application-users.properties
-RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-groups.properties > $JBOSS_HOME/standalone/configuration/mgmt-groups.properties 
-RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-users.properties > $JBOSS_HOME/standalone/configuration/mgmt-users.properties 
+RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-groups.properties > $JBOSS_HOME/standalone/configuration/mgmt-groups.properties
+RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/master/ansible/files/mgmt-users.properties > $JBOSS_HOME/standalone/configuration/mgmt-users.properties
 
 
 ####### MAVEN CONFIG #######
