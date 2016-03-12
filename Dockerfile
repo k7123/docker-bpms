@@ -11,8 +11,8 @@ USER jboss
 
 
 ####### BPMS ARTIFACT #######
-ENV ARTIFACT_REPOSITORY http://209.132.179.144
-ENV BPMS_VERSION 6.1.4.GA-redhat-2
+ENV ARTIFACT_REPOSITORY http://files.justinholmes.co/
+ENV BPMS_VERSION 6.3.0.DR2
 
 RUN cd /opt/jboss/ \
 	&& curl -O $ARTIFACT_REPOSITORY/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
