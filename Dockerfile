@@ -11,7 +11,7 @@ USER jboss
 
 
 ####### BPMS ARTIFACT #######
-ENV ARTIFACT_REPOSITORY http://209.132.179.144
+ENV ARTIFACT_REPOSITORY http://files.justinholmes.co
 ENV BPMS_VERSION 6.2.0.GA-redhat-1
 
 RUN cd /opt/jboss/ \
@@ -44,4 +44,6 @@ ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
 ####### PORTS #######
 EXPOSE 8080 9990 9418 8001
 
-CMD ["/opt/jboss/jboss-eap-6.4/bin/standalone.sh"]
+COPY startJBossWithOptions.sh /opt/jboss/jboss-eap-6.4/bin/
+
+CMD ["/opt/jboss/jboss-eap-6.4/bin/startJBossWithOptions.sh"]
