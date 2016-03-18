@@ -31,6 +31,10 @@ RUN curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/53e73
 RUN mkdir -p /opt/jboss/.m2 \
  && curl https://raw.githubusercontent.com/sherl0cks/ansible-openstack-etc/852ff4a423b147eab7d2025e51e0294214676c20/ansible/files/settings.xml > /opt/jboss/.m2/settings.xml
 
+####### SSH GITHOOK CONFIG #######
+RUN mkdir -p /opt/jboss/.ssh \
+ && chmod 755 /opt/jboss/.ssh
+
 
 ####### JAVA_OPTS #######
 ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
@@ -38,7 +42,8 @@ ENV JAVA_OPTS -Dkie.maven.settings.custom=/opt/jboss/.m2/settings.xml \
 	-Djboss.bind.address.management=0.0.0.0 \
     -Dorg.uberfire.nio.git.daemon.host=0.0.0.0 \
 	-Dorg.uberfire.nio.git.ssh.host=0.0.0.0 \
-	-Djava.security.egd=file:/dev/./urandom
+	-Djava.security.egd=file:/dev/./urandom \
+	-Dorg.uberfire.nio.git.ssh.cert.dir=/opt/jboss/.ssh
 
 
 ####### PORTS #######
