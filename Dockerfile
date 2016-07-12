@@ -1,4 +1,4 @@
-FROM sherl0cks/docker-eap:6.4.6
+FROM sherl0cks/docker-eap:6.4.8
 
 ####### MAINTAINER ############
 MAINTAINER "Justin Holmes" "jholmes@redhat.com"
@@ -12,10 +12,12 @@ USER jboss
 
 ####### BPMS ARTIFACT #######
 ENV ARTIFACT_REPOSITORY http://files.justinholmes.co
-ENV BPMS_VERSION 6.3.0.ER1
+ENV BPMS_VERSION 6.3.0.GA
+
+ADD jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip /opt/jboss/
 
 RUN cd /opt/jboss/ \
- && curl -O $ARTIFACT_REPOSITORY/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
+# && curl -O $ARTIFACT_REPOSITORY/jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip \
  && unzip -q -o jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip -d .  \
  &&	rm jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip
 
