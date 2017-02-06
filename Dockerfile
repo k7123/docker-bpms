@@ -1,4 +1,4 @@
-FROM sherl0cks/docker-eap:6.4.8
+FROM sherl0cks/docker-eap:latest
 
 ####### MAINTAINER ############
 MAINTAINER "Justin Holmes" "jholmes@redhat.com"
@@ -12,7 +12,7 @@ USER jboss
 
 ####### BPMS ARTIFACT #######
 ENV ARTIFACT_REPOSITORY http://files.justinholmes.co
-ENV BPMS_VERSION 6.3.0.GA
+ENV BPMS_VERSION 6.4.0.GA
 
 ADD jboss-bpmsuite-$BPMS_VERSION-deployable-eap6.x.zip /opt/jboss/
 
@@ -37,6 +37,14 @@ RUN mkdir -p /opt/jboss/.m2 \
 ####### SSH GITHOOK CONFIG #######
 RUN mkdir -p /opt/jboss/.ssh \
  && chmod 755 /opt/jboss/.ssh
+
+####### FILE PERMISSIONS #######
+RUN mkdir /opt/jboss/.niogit \
+ && chmod -R a+rw /opt/jboss/.niogit \
+ && mkdir /opt/jboss/repositories \
+ && chmod -R a+rw /opt/jboss/repositories \
+ && mkdir /opt/jboss/.index \
+ && chmod -R a+rw /opt/jboss/.index
 
 
 ####### JAVA_OPTS #######
